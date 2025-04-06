@@ -1,21 +1,23 @@
-import com.sun.org.apache.xpath.internal.objects.XNumber;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
-public class MainClassTest extends MainClass
-{
-    @Before
-    public void testBefore() {System.out.println("Test Start");}
-
-    @After
-    public void testAfter() {System.out.println("Test End");}
+public class MainClassTest extends MainClass{
 
     @Test
-    public void testGetMessage(){
-        String expected = getMessage();
-        Assert.assertTrue("Word is not included ", expected.contains("Hello"));
-        System.out.println("Word is included ");
+    public void testGetLocalNumber() {
+        assertEquals(14, getLocalNumber());
     }
+
+    @Test
+    public void testGetClassNumber() {
+        assertTrue("the number is not greater than 45. ", getClassNumber() > 45);
+    }
+
+    @Test
+    public void testGetClassString() {
+        String actual = getClassString();
+        boolean containsHello = actual.contains("Hello") || actual.contains("hello");
+        assertTrue("the string does not contain 'Hello' or 'hello'. " + actual, containsHello);
+    }
+
 }
